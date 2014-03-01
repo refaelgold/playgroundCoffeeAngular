@@ -1,7 +1,7 @@
 "use strict"
-angular.module("ngBookExamples").controller "MainCtrl", ($scope) ->
 
-
+#first controller of starting
+angular.module("ngBookExamples").controller "DataBindCtrl", ($scope) ->
   $scope.preson =
     name: "nir"
     age: 28,
@@ -50,9 +50,27 @@ angular.module("ngBookExamples").controller "MainCtrl", ($scope) ->
   updateClock()
 
 
+  $scope.counter=0
+  $scope.addCounter=(counter)->
+    $scope.counter++
+  $scope.despositCounter=(counter)->
+    if $scope.counter > 0
+      $scope.counter--
+    else
+      console.log "cant get minus"
 
+
+
+
+
+#second controller of Bdays
+angular.module("ngBookExamples").controller "BirthdayCtrl", ($scope) ->
   # Start as not visible but when button is tapped it will show as true
-  $scope.visible = false
+  $scope.visibleForm = false
+
+  $scope.visibleJsonData = false
+
+  #use for Bday Bdays
   $scope.visibleBDays = false
 
   # Create the array to hold the list of Birthdays
@@ -75,3 +93,5 @@ angular.module("ngBookExamples").controller "MainCtrl", ($scope) ->
     $scope.bdayname = ""
     $scope.bdaydate = ""
     return
+
+

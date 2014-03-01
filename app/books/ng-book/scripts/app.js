@@ -6,9 +6,15 @@
   app = angular.module("ngBookExamples", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]);
 
   app.config(function($routeProvider) {
-    return $routeProvider.when("/", {
+    $routeProvider.when("/", {
       templateUrl: "views/main.html",
-      controller: "MainCtrl"
+      controller: "DataBindCtrl"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    return $routeProvider.when("/bday", {
+      templateUrl: "views/bday.html",
+      controller: "BirthdayCtrl"
     }).otherwise({
       redirectTo: "/"
     });

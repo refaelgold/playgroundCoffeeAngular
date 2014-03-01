@@ -7,55 +7,40 @@
         li
             a(ng-href='#') Contact
     h3.text-muted playgroundCoffeeAngular
-    span Your Name
+
+
+
+    h3.underline.red data-binding
+    span Your Name :
     input(type='text', ng-model='preson.name', placeholder='Your Name')
     br
-    span Your Age
+    span Your Age :
     input(type='text', ng-model='preson.age', placeholder='Your Age')
+    br
+    span Your Career :
+    input(type='text', ng-model='preson.career', placeholder='Your Career')
 
-    h1 your Name is:  &lcub;&lcub; preson.name &rcub;&rcub;
-    h1 Your Age is :  &lcub;&lcub; preson.age &rcub;&rcub;
 
-    h3 show the time every second updating :
-    span &lcub;&lcub; clock.now | date:'MM-dd-yyyy HH:MM:ss' &rcub;&rcub;
+    pre {{ preson }}
+
+
+    h5 your Name is:  {{  preson.name }}
+    h5 Your Age is :  {{  preson.age }}
+
+    h3.underline.red show the time every second updating
+    span {{ clock.now | date:'dd-MM-yyyy HH:MM:ss' }}
 
 
 
     h3 show the time in  Json  :
-    span &lcub;&lcub; jsonClock | date:'MM-dd-yyyy HH:MM:ss' &rcub;&rcub;
+    span {{  jsonClock | date:'dd-MM-yyyy HH:MM:ss' }}
 
 
 
+    h4.underline.red Add/Subtract methods
+    button.button(ng-click='addCounter(1)') Add
+    a.button.alert(ng-click='despositCounter(-1)') Subtract
+    h4 Current count: {{  counter }}
 
 
 
-    .page-header
-        h1 Birthday Reminders
-
-    //run in the array
-    ul(ng-repeat='bday in bdays')
-        li &lcub;&lcub;bday&period;name&rcub;&rcub; &VerticalLine; &lcub;&lcub;bday&period;date&rcub;&rcub;
-
-    //get a new form with submit button
-    form(ng-show='visible', ng-submit='newBirthday()')
-        label Name&colon;
-        input(type='text', ng-model='bdayname', placeholder='Name')
-        label Date&colon;
-        input(type='date', ng-model='bdaydate', placeholder='Date')
-        button.btn(type='submit',ng-click='visibleBDays = true') Save
-    #push
-    a.btn(ng-click='visible = true')
-        i.icon-plus
-        | Add
-
-
-    h2 convert to JSON
-    pre(ng-show='visibleBDays') &lcub;&lcub; bdays | json &rcub;&rcub;
-    a(href='data:text/json;charset=utf-8,{{bdays | json | encodeURIComponent }}', download='BDay_list.json')
-        button download JSON for all the list
-
-
-    h2 convert to JSON Last ValueAdd
-    pre(ng-show='visibleBDays') &lcub;&lcub; lastItem | json &rcub;&rcub;
-    a(href='data:text/json;charset=utf-8,{{lastItem | json | encodeURIComponent }}', download='BDay_list.json')
-        button download Single Json
