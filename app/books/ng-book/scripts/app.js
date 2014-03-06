@@ -71,10 +71,11 @@
       }
     };
   });
+
   app.directive("row", function() {
     return {
-      replace: false,
-      template: '<td>' + '<span>{{user.id}}</span>' + '</td>'+'<td>' + '<span>{{user.username}}</span>' + '</td>'+'<td>'+'<span>{{user.name}}</span>' + '</td>'+'<td>'+'<span>{{user.email}}</span>' + '</td><td>'+'<span ng-click="deleteRow(user.id)">delete</span></td>'
+      replace: true,
+      template: '<td>' + '<span>{{user.id}}</span>' + '</td>' + '<td>' + '<span>{{user.username}}</span>' + '</td>' + '<td>' + '<span>{{user.name}}</span>' + '</td>' + '<td>' + '<span>{{user.email}}</span>' + '</td><td>' + '<span ng-click="deleteRow(user.id)">delete</span></td>'
     };
   });
 
