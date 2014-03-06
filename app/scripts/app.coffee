@@ -14,3 +14,6 @@ app.config ($routeProvider) ->
 
 app.filter "encodeURIComponent", ->
     window.encodeURIComponent
+
+
+

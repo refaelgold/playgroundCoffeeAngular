@@ -30,9 +30,15 @@
     }).otherwise({
       redirectTo: "/"
     });
-    return $routeProvider.when("/form", {
+    $routeProvider.when("/form", {
       templateUrl: "views/form.html",
       controller: "FormCtrl"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    return $routeProvider.when("/directive", {
+      templateUrl: "views/directive.html",
+      controller: "directiveCtrl"
     }).otherwise({
       redirectTo: "/"
     });
@@ -63,6 +69,20 @@
       if (coin) {
         return coin * 4.7998;
       }
+    };
+  });
+  app.directive("row", function() {
+    return {
+      replace: false,
+      template: '<td>' + '<span>{{user.id}}</span>' + '</td>'+'<td>' + '<span>{{user.username}}</span>' + '</td>'+'<td>'+'<span>{{user.name}}</span>' + '</td>'+'<td>'+'<span>{{user.email}}</span>' + '</td><td>'+'<span ng-click="deleteRow(user.id)">delete</span></td>'
+    };
+  });
+
+  app.factory("usersServies", function() {
+    var users;
+    users = [];
+    return {
+      users: users
     };
   });
 

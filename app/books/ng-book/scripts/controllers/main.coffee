@@ -153,11 +153,14 @@ angular.module("ngBookExamples").controller "FilterCrtl", [
 
 angular.module("ngBookExamples").controller "FormCtrl", [
   "$scope"
-  ($scope) ->
+  "usersServies"
+  ($scope,usersServies) ->
 
-    $scope.users = []#array of all users
+
+    $scope.users = usersServies.users;
     $scope.hideShowTrigFormTable=false#hide the table on the first time
     $scope.id=0
+
 
 
     # function to submit the form after all validation has occurred
@@ -176,6 +179,7 @@ angular.module("ngBookExamples").controller "FormCtrl", [
       $scope.hideShowTrigFormTable=true
 
 
+
     $scope.deleteRow = (id) ->
       console.log id
       console.log $scope.users
@@ -183,4 +187,10 @@ angular.module("ngBookExamples").controller "FormCtrl", [
         $scope.users.splice id-1, 1
       else
         $scope.users.splice 0, 1
+]
+
+angular.module("ngBookExamples").controller "directiveCtrl", [
+  "$scope"
+  ($scope) ->
+
 ]

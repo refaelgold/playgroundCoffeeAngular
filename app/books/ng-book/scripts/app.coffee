@@ -1,11 +1,18 @@
 "use strict"
+
+
+#libs
 app=angular.module("ngBookExamples", [
   "ngCookies"
   "ngResource"
   "ngSanitize"
   "ngRoute"
+
 ])
 
+
+
+#route
 app.config ($routeProvider) ->
   $routeProvider.when("/",
     templateUrl: "views/main.html"
@@ -34,9 +41,20 @@ app.config ($routeProvider) ->
   ).otherwise redirectTo: "/"
 
 
+  $routeProvider.when("/directive",
+    templateUrl: "views/directive.html"
+    controller: "directiveCtrl"
+  ).otherwise redirectTo: "/"
 
 
 
+
+
+
+
+
+
+#filters
 app.filter "encodeURIComponent", ->
   window.encodeURIComponent
 
@@ -52,3 +70,31 @@ app.filter "shekelToDollar", ->
 app.filter "shekelToEuro", ->
   (coin) ->
     (if coin then coin*4.7998)
+
+
+
+
+#directive
+#app.directive "myDirective", ->
+#  restrict: "E"
+#  replace: true,
+#  template: "<h1>test</h1>"
+#
+#
+#
+
+app.directive "row", ->
+  replace: true,
+  template:
+      '<tr>'+
+        '<td>{{user.name}}</td>'+
+      '</tr>'
+
+
+
+
+#services
+app.factory "usersServies", ->
+  users = []
+  users: users
+

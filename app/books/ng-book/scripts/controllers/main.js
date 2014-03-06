@@ -109,8 +109,8 @@
   ]);
 
   angular.module("ngBookExamples").controller("FormCtrl", [
-    "$scope", function($scope) {
-      $scope.users = [];
+    "$scope", "usersServies", function($scope, usersServies) {
+      $scope.users = usersServies.users;
       $scope.hideShowTrigFormTable = false;
       $scope.id = 0;
       $scope.submitForm = function(isValid) {
@@ -139,6 +139,8 @@
       };
     }
   ]);
+
+  angular.module("ngBookExamples").controller("directiveCtrl", ["$scope", function($scope) {}]);
 
 }).call(this);
 
