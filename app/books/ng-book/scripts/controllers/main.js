@@ -71,6 +71,75 @@
     };
   });
 
+  angular.module("ngBookExamples").controller("MoreServiceScope", [
+    "$scope", "$parse", function($scope, $parse) {
+      $scope.parsedExpr = 0;
+      $scope.giveUsSomeMath = function() {
+        return $scope.$watch("expr", function(newVal, oldVal, scope) {
+          var parseFun;
+          if (newVal !== void 0) {
+            parseFun = $parse(newVal);
+            scope.parsedExpr = parseFun(scope);
+          }
+        });
+      };
+    }
+  ]);
+
+  angular.module("ngBookExamples").controller("FilterCrtl", [
+    "$scope", "$filter", function($scope, $filter) {
+      $scope.name = "Nir Goldman";
+      $scope.makeLowerCase = function() {
+        return $scope.name = $filter("lowercase")($scope.name);
+      };
+      $scope.makeUpperCase = function() {
+        return $scope.name = $filter("uppercase")($scope.name);
+      };
+      $scope.makeCaplitalize = function() {
+        return $scope.name = $filter("capitalize")($scope.name);
+      };
+      $scope.moneyNumInput = 100;
+      $scope.MakeDollars = function() {
+        return $scope.moneyNum = $filter("shekelToDollar")($scope.moneyNumInput);
+      };
+      return $scope.makeEuros = function() {
+        return $scope.moneyNum = $filter("shekelToEuro")($scope.moneyNumInput);
+      };
+    }
+  ]);
+
+  angular.module("ngBookExamples").controller("FormCtrl", [
+    "$scope", function($scope) {
+      $scope.users = [];
+      $scope.hideShowTrigFormTable = false;
+      $scope.id = 0;
+      $scope.submitForm = function(isValid) {
+        if (isValid) {
+          return $scope.addRow();
+        }
+      };
+      $scope.addRow = function() {
+        $scope.id++;
+        $scope.users.push({
+          name: $scope.user.name,
+          username: $scope.user.username,
+          email: $scope.user.email,
+          id: $scope.id
+        });
+        return $scope.hideShowTrigFormTable = true;
+      };
+      return $scope.deleteRow = function(id) {
+        console.log(id);
+        console.log($scope.users);
+        if ((id - 1) > 0) {
+          return $scope.users.splice(id - 1, 1);
+        } else {
+          return $scope.users.splice(0, 1);
+        }
+      };
+    }
+  ]);
+
 }).call(this);
 
 //# sourceMappingURL=main.map

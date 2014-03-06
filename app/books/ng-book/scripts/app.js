@@ -12,9 +12,27 @@
     }).otherwise({
       redirectTo: "/"
     });
-    return $routeProvider.when("/bday", {
+    $routeProvider.when("/bday", {
       templateUrl: "views/bday.html",
       controller: "BirthdayCtrl"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    $routeProvider.when("/services", {
+      templateUrl: "views/services.html",
+      controller: "MoreServiceScope"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    $routeProvider.when("/filters", {
+      templateUrl: "views/filters.html",
+      controller: "FilterCrtl"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    return $routeProvider.when("/form", {
+      templateUrl: "views/form.html",
+      controller: "FormCtrl"
     }).otherwise({
       redirectTo: "/"
     });
@@ -22,6 +40,30 @@
 
   app.filter("encodeURIComponent", function() {
     return window.encodeURIComponent;
+  });
+
+  app.filter("capitalize", function() {
+    return function(input) {
+      if (input) {
+        return input[0].toUpperCase() + input.slice(1).toLowerCase();
+      }
+    };
+  });
+
+  app.filter("shekelToDollar", function() {
+    return function(coin) {
+      if (coin) {
+        return coin * 3.4880;
+      }
+    };
+  });
+
+  app.filter("shekelToEuro", function() {
+    return function(coin) {
+      if (coin) {
+        return coin * 4.7998;
+      }
+    };
   });
 
 }).call(this);
