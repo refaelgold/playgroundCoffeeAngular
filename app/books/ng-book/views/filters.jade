@@ -1,0 +1,16 @@
+//
+   Created by refaelgold on 3/5/14.
+
+h2 {{name}}
+button(ng-click='makeLowerCase()') Lowercase
+button(ng-click='makeUpperCase()') Uppercase
+button(ng-click='makeCaplitalize()') Capitalize
+
+
+br
+
+input(type='text', ng-model='moneyNumInput', placeholder='Number to convert' )
+br
+h2{{moneyNum | number:2 }}
+button(ng-click='makeEuros()') Convert To Euros
+button(ng-click='MakeDollars()') Convert To Dollars

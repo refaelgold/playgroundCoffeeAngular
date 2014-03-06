@@ -1,0 +1,29 @@
+//
+   Created by refaelgold on 3/1/14.
+
+.page-header
+    h3.underline.red Birthday Reminders
+    //run in the array
+    ul(ng-repeat='bday in bdays')
+        li {{ bday.name}} &VerticalLine; {{ bday.date}}
+    //get a new form with submit button
+    form(ng-show='visibleForm=true', ng-submit='newBirthday()')
+        label Name
+        input(type='text', ng-model='bdayname', placeholder='Name')
+        br
+        label Date
+        input(type='date', ng-model='bdaydate', placeholder='Date')
+        button.btn(type='submit',ng-click='visibleBDays = true ; visibleJsonData=true') Save
+    #push
+    a.btn(ng-click='visibleForm = true')
+        i.icon-plus
+        | Add
+    div(ng-show='visibleJsonData')
+        h5.green convert to JSON
+        pre(ng-show='visibleBDays') {{  bdays | json }}
+        a(href='data:text/json;charset=utf-8,{{bdays | json | encodeURIComponent }}', download='BDay_list.json')
+            button download JSON for all the list
+        h5.green convert to JSON Last ValueAdd
+        pre(ng-show='visibleBDays') {{  lastItem | json }}
+        a(href='data:text/json;charset=utf-8,{{lastItem | json | encodeURIComponent }}', download='BDay_list.json')
+            button download Single Json
