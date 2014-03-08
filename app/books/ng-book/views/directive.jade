@@ -5,6 +5,22 @@
         .page-header
             h1 Interduce with directive
             my-directive
+            comment-me
+        div(my-link , my-url='http://www.google.co.il' , my-link-text='google')
+
+
+
+        h2 create your own URL
+        label Their URL field:
+        input(type='text', ng-model='customUrlAddress')
+        br
+        label link text:
+        input(type='text', ng-model='customLinkText')
+        br
+
+        div(my-link-tester='', custom-url-address='customUrlAddress', custom-link-text='customLinkText')
+
+
             //container
 
 

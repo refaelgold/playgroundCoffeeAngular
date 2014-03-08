@@ -74,20 +74,45 @@ app.filter "shekelToEuro", ->
 
 
 
-#directive
-#app.directive "myDirective", ->
-#  restrict: "E"
-#  replace: true,
-#  template: "<h1>test</h1>"
-#
-#
-#
+#START of Directive
+app.directive "myDirective", ->
+  restrict: 'E',
+  replace: true,
+  template: "<h1>this is an element</h1>"
+
+
+
+
+app.directive "commentMe", ->
+  restrict: "EAC",
+  replace: true,
+  template: "<h1>this is a test</h1>"
+
+
+
 
 app.directive "row", ->
-  replace: true,
+  restrict: 'A',
+  replace: false,
   template: '<td>' + '<span>{{user.id}}</span>' + '</td>'+'<td>' + '<span>{{user.username}}</span>' + '</td>'+'<td>'+'<span>{{user.name}}</span>' + '</td>'+'<td>'+'<span>{{user.email}}</span>' + '</td><td>'+'<span ng-click="deleteRow(user.id)">delete</span></td>'
 
 
+
+app.directive "myLink", ->
+  replace: true
+  scope:
+    myUrl: "@"
+    myLinkText: "@"
+  template:'<a href="{{myUrl}}">{{myLinkText}}</span>'
+
+app.directive "myLinkTester", ->
+  restrict: "A"
+  replace: true
+  scope:
+    customUrlAddress: "=customUrlAddress"
+    CustomLinkText: "=linkGo"
+  template: "<a href={{customUrlAddress}}>{{linkGo}}</a>"
+#END of Directives
 
 
 

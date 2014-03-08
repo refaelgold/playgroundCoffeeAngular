@@ -72,10 +72,50 @@
     };
   });
 
+  app.directive("myDirective", function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      template: "<h1>this is an element</h1>"
+    };
+  });
+
+  app.directive("commentMe", function() {
+    return {
+      restrict: "EAC",
+      replace: true,
+      template: "<h1>this is a test</h1>"
+    };
+  });
+
   app.directive("row", function() {
     return {
-      replace: true,
+      restrict: 'A',
+      replace: false,
       template: '<td>' + '<span>{{user.id}}</span>' + '</td>' + '<td>' + '<span>{{user.username}}</span>' + '</td>' + '<td>' + '<span>{{user.name}}</span>' + '</td>' + '<td>' + '<span>{{user.email}}</span>' + '</td><td>' + '<span ng-click="deleteRow(user.id)">delete</span></td>'
+    };
+  });
+
+  app.directive("myLink", function() {
+    return {
+      replace: true,
+      scope: {
+        myUrl: "@",
+        myLinkText: "@"
+      },
+      template: '<a href="{{myUrl}}">{{myLinkText}}</span>'
+    };
+  });
+
+  app.directive("myLinkTester", function() {
+    return {
+      restrict: "A",
+      replace: true,
+      scope: {
+        customUrlAddress: "=customUrlAddress",
+        customLinkText: "=customLinkText"
+      },
+      template: "<a href={{customUrlAddress}}>{{customLinkText}}</a>"
     };
   });
 

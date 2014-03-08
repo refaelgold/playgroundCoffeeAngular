@@ -36,7 +36,6 @@
                SUBMIT BUTTON
             button.btn.btn-primary(type='submit' , ng-disabled="userForm.$invalid") Submit
         //col-sm-8
-
         table#uniqueTable.table.table-bordered(ng-show="hideShowTrigFormTable")
             tr
                 th id
@@ -44,6 +43,7 @@
                 th Username
                 th Email
                 th Actions
+
             tr(ng-repeat='user in users' , row )
 
 

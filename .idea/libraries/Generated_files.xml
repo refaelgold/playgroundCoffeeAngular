@@ -2,12 +2,13 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/main.js" />
-        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/services.js" />
-        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/app.js" />
         <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/bday.js" />
+        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/main.js" />
+        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/app.js" />
+        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/services.js" />
         <item url="file://$PROJECT_DIR$/app/scripts/app.js" />
         <item url="file://$PROJECT_DIR$/app/scripts/controllers/main.js" />
+        <item url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/bday.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -15,12 +16,13 @@
       <root url="file://$PROJECT_DIR$/app/scripts/books/ng-book/controllers/main.js" />
       <root url="file://$PROJECT_DIR$/app/books/ng-book/controllers/main.js" />
       <root url="file://$PROJECT_DIR$/app/books/ng-book/controllers/main.js" />
-      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/main.js" />
-      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/services.js" />
-      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/app.js" />
       <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/bday.js" />
+      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/main.js" />
+      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/app.js" />
+      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/services.js" />
       <root url="file://$PROJECT_DIR$/app/scripts/app.js" />
       <root url="file://$PROJECT_DIR$/app/scripts/controllers/main.js" />
+      <root url="file://$PROJECT_DIR$/app/books/ng-book/scripts/controllers/bday.js" />
     </CLASSES>
     <SOURCES />
   </library>
