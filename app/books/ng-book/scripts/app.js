@@ -5,10 +5,16 @@
 
   app = angular.module("ngBookExamples", ["ngCookies", "ngResource", "ngSanitize", "ngRoute", "ngAnimate"]);
 
-  app.config(function($routeProvider) {
+  app.config(function($routeProvider, $locationProvider) {
+    $routeProvider.when("/bind", {
+      templateUrl: "views/data_bind.html",
+      controller: "DataBindCtrl"
+    }).otherwise({
+      redirectTo: "/"
+    });
     $routeProvider.when("/", {
       templateUrl: "views/main.html",
-      controller: "DataBindCtrl"
+      controller: "mainCtrl"
     }).otherwise({
       redirectTo: "/"
     });
@@ -36,9 +42,15 @@
     }).otherwise({
       redirectTo: "/"
     });
-    return $routeProvider.when("/directive", {
+    $routeProvider.when("/directive", {
       templateUrl: "views/directive/directive.html",
       controller: "directiveCtrl"
+    }).otherwise({
+      redirectTo: "/"
+    });
+    return $routeProvider.when("/di", {
+      templateUrl: "views/di.html",
+      controller: "DICtrl"
     }).otherwise({
       redirectTo: "/"
     });
@@ -119,11 +131,44 @@
     };
   });
 
+  app.factory("greeter", function() {
+    return {
+      greet_man: function(msg) {
+        console.log("hello mr " + msg);
+      },
+      greet_woman: function(msg) {
+        console.log("hello misses " + msg);
+      },
+      greet_jewish: function(msg) {
+        console.log("salom " + msg);
+      },
+      greet_mueslem: function(msg) {
+        console.log("salam halukum " + msg);
+      }
+    };
+  });
+
   app.factory("usersServies", function() {
     var users;
     users = [];
     return {
       users: users
+    };
+  });
+
+  app.factory("githubService", function($http) {
+    var githubUrl, runUserRequest;
+    githubUrl = "https://api.github.com";
+    runUserRequest = function(username, path) {
+      return $http({
+        method: "JSONP",
+        url: githubUrl + "/users/" + username + "/" + path + "?callback=JSON_CALLBACK"
+      });
+    };
+    return {
+      events: function(username) {
+        return runUserRequest(username, "events");
+      }
     };
   });
 

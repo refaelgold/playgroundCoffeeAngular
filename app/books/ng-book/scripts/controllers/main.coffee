@@ -1,6 +1,17 @@
 "use strict"
 
 #first controller of starting
+
+
+
+angular.module("ngBookExamples").controller "mainCtrl", [
+  "$scope"
+  ($scope) ->
+
+]
+
+
+
 angular.module("ngBookExamples").controller "DataBindCtrl", ($scope ) ->
   $scope.preson =
     name: "nir"
@@ -18,7 +29,6 @@ angular.module("ngBookExamples").controller "DataBindCtrl", ($scope ) ->
     return
   ), 1000
   updateClock()
-
 
 
 #  parse json clock
@@ -96,15 +106,43 @@ angular.module("ngBookExamples").controller "BirthdayCtrl", ($scope) ->
 
 
 
-
-
 #third controller of Bdays
 # give us some parse
 angular.module("ngBookExamples").controller "MoreServiceScope", [
   "$scope"
   "$parse"
-  ($scope, $parse) ->
-    $scope.parsedExpr=0
+  "githubService"
+  "$timeout"
+  ($scope, $parse,githubService,$timeout) ->
+    timeout = undefined
+
+# Watch for changes on the username property.
+# If there is a change, run the function
+    $scope.$watch "username", (newUsername) ->
+      if newUsername
+
+        # If there is a timeout already
+        # in progress
+        $timeout.cancel timeout  if timeout
+        timeout = $timeout(->
+          githubService.events(newUsername).success (data, status) ->
+            $scope.events = data.data
+          , 350)
+
+    # uses the $http service to call the
+    # GitHub API and returns the resulting promise
+      githubService.events(newUsername).success (data, status, headers) ->
+
+      # the success function wraps
+      # the response in data
+      # so we need to call data.data to
+      # fetch the raw data
+        $scope.events = data.data
+
+
+
+
+      $scope.parsedExpr=0
     $scope.giveUsSomeMath = ->
       $scope.$watch "expr", (newVal, oldVal, scope) ->
         if newVal isnt undefined
@@ -120,6 +158,8 @@ angular.module("ngBookExamples").controller "MoreServiceScope", [
 
         return
     return
+
+
 ]
 
 
@@ -190,6 +230,9 @@ angular.module("ngBookExamples").controller "FormCtrl", [
 ]
 
 
+
+
+
 #we cant use the javascript setTimeOut becuase its a build-in function in js
 
 angular.module("ngBookExamples").controller "directiveCtrl", [
@@ -246,7 +289,6 @@ angular.module("ngBookExamples").controller "directiveCtrl", [
     $scope.template = $scope.templates[0]
 
 
-
     #form
     $scope.fields =[
       {
@@ -294,19 +336,21 @@ angular.module("ngBookExamples").controller "directiveCtrl", [
 
 
 
-
-
-
-
-
     $timeout ()->
       $scope.isDisabled=false
 
     ,5000
     return
+]
 
 
 
-
-
+angular.module("ngBookExamples").controller "DICtrl", [
+  "$scope"
+  "greeter"
+  ($scope , greeter) ->
+    $scope.sayHello = ->
+      greeter.greet_mueslem "Nir"
+      greeter.greet_jewish "Nir"
+      return
 ]

@@ -14,11 +14,19 @@ app=angular.module("ngBookExamples", [
 
 
 #route
-app.config ($routeProvider) ->
-  $routeProvider.when("/",
-    templateUrl: "views/main.html"
+app.config ($routeProvider,$locationProvider) ->
+  $routeProvider.when("/bind",
+    templateUrl: "views/data_bind.html"
     controller: "DataBindCtrl"
   ).otherwise redirectTo: "/"
+
+
+  $routeProvider.when("/",
+      templateUrl: "views/main.html"
+      controller: "mainCtrl"
+    ).otherwise redirectTo: "/"
+
+
 
 
   $routeProvider.when("/bday",
@@ -47,8 +55,13 @@ app.config ($routeProvider) ->
     controller: "directiveCtrl"
   ).otherwise redirectTo: "/"
 
+  $routeProvider.when("/di",
+    templateUrl: "views/di.html"
+    controller: "DICtrl"
+  ).otherwise redirectTo: "/"
 
-
+#  $locationProvider.html5Mode(true);
+#  $locationProvider.hasPrefix("!");
 
 
 
@@ -63,7 +76,6 @@ app.filter "capitalize", ->
   (input) ->
     (if input then input[0].toUpperCase()+input.slice(1).toLowerCase())
 
-
 app.filter "shekelToDollar", ->
   (coin) ->
     (if coin then coin*3.4880)
@@ -71,8 +83,7 @@ app.filter "shekelToDollar", ->
 app.filter "shekelToEuro", ->
   (coin) ->
     (if coin then coin*4.7998)
-
-
+###############################
 
 
 #START of Directive
@@ -117,8 +128,65 @@ app.directive "myLinkTester", ->
 
 
 
-#services
+
+
+
+
+#factories
+
+app.factory "greeter", ->
+  greet_man: (msg) ->
+    console.log "hello mr "+msg
+    return
+  greet_woman: (msg) ->
+    console.log "hello misses "+msg
+    return
+  greet_jewish: (msg) ->
+    console.log "salom "+msg
+    return
+  greet_mueslem: (msg) ->
+    console.log "salam halukum "+msg
+    return
+
+
+
+
 app.factory "usersServies", ->
   users = []
   users: users
+
+
+
+#services
+
+
+#github services
+app.factory "githubService", ($http) ->
+  githubUrl = "https://api.github.com"
+  runUserRequest = (username, path) ->
+
+    # Return the promise from the $http service
+    # that calls the Github API using JSONP
+    $http
+      method: "JSONP"
+      url: githubUrl + "/users/" + username + "/" + path + "?callback=JSON_CALLBACK"
+
+
+
+  # Return the service object with a single function
+  # events
+  events: (username) ->
+    runUserRequest username, "events"
+
+
+
+#// Return the service object with a single function
+#// events
+#return {
+#events: function(username) {
+#return runUserRequest(username, 'events');
+#}
+#};
+
+
 

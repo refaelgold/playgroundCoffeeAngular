@@ -8,3 +8,16 @@ button(ng-click='giveUsSomeMath()') get Result
 div {{ parsedExpr }}
 
 
+
+h4.red github component
+
+label(for='username')
+    | Type in a GitHub username
+    input(type='text', ng-model='username', placeholder='Enter a GitHub username')
+    ul
+
+
+        li(ng-repeat='event in events')
+            span {{ event | json }}
+            h5.red {{ event.actor.login }}
+            h5.green {{ event.repo.name }}

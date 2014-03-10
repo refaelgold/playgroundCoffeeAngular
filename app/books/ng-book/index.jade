@@ -25,8 +25,6 @@ html.no-js
         // endbuild
 
     body(ng-app='ngBookExamples')
-
-
         //if lt IE 7
           p.browsehappy
             | You are using an
@@ -35,7 +33,31 @@ html.no-js
             a(href='http://browsehappy.com/') upgrade your browser
             | to improve your experience&period;
         // Add your site or application content here
+
+
+
+        h1 layout definition
+        header.red this is a header
+            div
+                ul
+                    li
+                        a(href='/books/ng-book/') Home
+                    li
+                        a(href='/books/ng-book/#/form') form
+                    li
+                        a(href='/books/ng-book/#/directive') directive
+
+
+
+
+
+
         .container(ng-view='')
+
+
+        footer.red this is A footer
+
+
         //if lt IE 9
           script(src='scripts/vendor/es5-shim.min.js')
           script(src='scripts/vendor/json3.min.js')
