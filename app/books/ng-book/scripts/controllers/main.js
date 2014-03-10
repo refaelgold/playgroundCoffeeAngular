@@ -140,7 +140,82 @@
     }
   ]);
 
-  angular.module("ngBookExamples").controller("directiveCtrl", ["$scope", function($scope) {}]);
+  angular.module("ngBookExamples").controller("directiveCtrl", [
+    "$scope", "$timeout", function($scope, $timeout) {
+      $scope.checkBoxValue = true;
+      $scope.readOnlyProp = true;
+      $scope.isDisabled = true;
+      $scope.selectValue = true;
+      $scope.linkImage = "http://nuclearpixel.com/content/icons/2010-02-09_stellar_icons_from_space_from_2005/earth_128.png";
+      $scope.linkValue = "http://www.nirgoldman.com/";
+      $scope.items = ["selector", "ice_cream", "spinch"];
+      $scope.selection = $scope.items[0];
+      $scope.people = [
+        {
+          name: "Ari",
+          city: "San Francisco"
+        }, {
+          name: "Erik",
+          city: "Seattle"
+        }, {
+          name: "Nir",
+          city: "TLV"
+        }, {
+          name: "Pitter-pen",
+          city: "Neverland"
+        }, {
+          name: "Alice",
+          city: "Wonderland"
+        }
+      ];
+      $scope.templates = [
+        {
+          name: "template1.html",
+          url: "views/directive/temp001.html"
+        }, {
+          name: "template2.html",
+          url: "views/directive/temp002.html"
+        }
+      ];
+      $scope.template = $scope.templates[0];
+      $scope.fields = [
+        {
+          placeholder: "Username",
+          isRequired: true
+        }, {
+          placeholder: "Password",
+          isRequired: true
+        }, {
+          placeholder: "Email (optional)",
+          isRequired: false
+        }
+      ];
+      $scope.submitForm = function() {
+        alert("it works!");
+      };
+      $scope.cities = [
+        {
+          name: "Seattle"
+        }, {
+          name: "San Francisco"
+        }, {
+          name: "Chicago"
+        }, {
+          name: "New York"
+        }, {
+          name: "Boston"
+        }
+      ];
+      $scope.equation = {};
+      $scope.change = function() {
+        return $scope.equation.output = Number($scope.equation.x) + 2;
+      };
+      return;
+      $timeout(function() {
+        return $scope.isDisabled = false;
+      }, 5000);
+    }
+  ]);
 
 }).call(this);
 

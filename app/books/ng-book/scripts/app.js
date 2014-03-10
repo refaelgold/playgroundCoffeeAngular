@@ -3,7 +3,7 @@
   "use strict";
   var app;
 
-  app = angular.module("ngBookExamples", ["ngCookies", "ngResource", "ngSanitize", "ngRoute"]);
+  app = angular.module("ngBookExamples", ["ngCookies", "ngResource", "ngSanitize", "ngRoute", "ngAnimate"]);
 
   app.config(function($routeProvider) {
     $routeProvider.when("/", {
@@ -37,7 +37,7 @@
       redirectTo: "/"
     });
     return $routeProvider.when("/directive", {
-      templateUrl: "views/directive.html",
+      templateUrl: "views/directive/directive.html",
       controller: "directiveCtrl"
     }).otherwise({
       redirectTo: "/"
@@ -113,9 +113,9 @@
       replace: true,
       scope: {
         customUrlAddress: "=customUrlAddress",
-        customLinkText: "=customLinkText"
+        CustomLinkText: "=linkGo"
       },
-      template: "<a href={{customUrlAddress}}>{{customLinkText}}</a>"
+      template: "<a href={{customUrlAddress}}>{{linkGo}}</a>"
     };
   });
 

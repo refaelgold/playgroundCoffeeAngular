@@ -189,8 +189,124 @@ angular.module("ngBookExamples").controller "FormCtrl", [
         $scope.users.splice 0, 1
 ]
 
+
+#we cant use the javascript setTimeOut becuase its a build-in function in js
+
 angular.module("ngBookExamples").controller "directiveCtrl", [
   "$scope"
-  ($scope) ->
+  "$timeout"
+  ($scope , $timeout) ->
+    $scope.checkBoxValue=true
+    $scope.readOnlyProp=true
+    $scope.isDisabled = true
+    $scope.selectValue=true
+    $scope.linkImage="http://nuclearpixel.com/content/icons/2010-02-09_stellar_icons_from_space_from_2005/earth_128.png"
+    $scope.linkValue="http://www.nirgoldman.com/"
+    $scope.items = [
+      "selector"
+      "ice_cream"
+      "spinch"
+    ]
+    $scope.selection = $scope.items[0]
+
+    $scope.people = [
+      {
+        name: "Ari"
+        city: "San Francisco"
+      }
+      {
+        name: "Erik"
+        city: "Seattle"
+      }
+      {
+        name: "Nir"
+        city: "TLV"
+      }
+      {
+        name:"Pitter-pen"
+        city:"Neverland"
+      }
+      {
+        name: "Alice"
+        city: "Wonderland"
+      }
+    ]
+
+    #must put the views and put all the link
+    $scope.templates = [
+      {
+        name: "template1.html"
+        url: "views/directive/temp001.html"
+      }
+      {
+        name: "template2.html"
+        url: "views/directive/temp002.html"
+      }
+    ]
+    $scope.template = $scope.templates[0]
+
+
+
+    #form
+    $scope.fields =[
+      {
+        placeholder: "Username"
+        isRequired: true
+      }
+      {
+        placeholder: "Password"
+        isRequired: true
+      }
+      {
+        placeholder: "Email (optional)"
+        isRequired: false
+      }
+    ]
+    $scope.submitForm = ->
+      alert "it works!"
+      return
+    ##################
+
+
+    $scope.cities = [
+      {
+        name: "Seattle"
+      }
+      {
+        name: "San Francisco"
+      }
+      {
+        name: "Chicago"
+      }
+      {
+        name: "New York"
+      }
+      {
+        name: "Boston"
+      }
+    ]
+
+
+    $scope.equation = {}
+    $scope.change = ->
+      $scope.equation.output = Number($scope.equation.x) + 2
+    return
+
+
+
+
+
+
+
+
+    $timeout ()->
+      $scope.isDisabled=false
+
+    ,5000
+    return
+
+
+
+
 
 ]

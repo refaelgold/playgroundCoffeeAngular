@@ -7,6 +7,7 @@ app=angular.module("ngBookExamples", [
   "ngResource"
   "ngSanitize"
   "ngRoute"
+  "ngAnimate"
 
 ])
 
@@ -42,7 +43,7 @@ app.config ($routeProvider) ->
 
 
   $routeProvider.when("/directive",
-    templateUrl: "views/directive.html"
+    templateUrl: "views/directive/directive.html"
     controller: "directiveCtrl"
   ).otherwise redirectTo: "/"
 
